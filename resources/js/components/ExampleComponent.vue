@@ -1,22 +1,31 @@
 <template>
     <div class="container">
 
+    <table>
+        <th>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Body</td>
+            <td>Action</td>
 
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="book in books" :key="book.id">
-                <td>{{ book.id }}</td>
-                <td>{{ book.title }}</td>
-                
-            </tr>
-            </tbody>
-        </table>
+        </th>
+        <tr v-for="article in articles" :key="article.id">
+            <td>{{ article.id }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.body }}</td>
+            <td>
+                    Edit
+            </td>
+            
+        </tr>
+
+    </table>   
+        
+
+    
+       
+  </table>
+       
 
 
     </div>
@@ -24,18 +33,17 @@
 
 <script>
     export default {
-        mounted() {
-            axios.get('http://localhost/blog/articles/')
-                .then(response => {
-                    this.books = response.data;
-                });
-
-
-        },
+        
         data() {
             return {
-                books: []
+                articles: null
             }
+        },
+        mounted() {
+        axios.get('http://localhost/blog/articles/')
+          .then(response => {
+                this.articles = response.data;
+          });
         }
     }
 </script>
