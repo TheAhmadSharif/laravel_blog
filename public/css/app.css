@@ -11385,6 +11385,7 @@ ul,
 li {
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .btn,
@@ -11399,5 +11400,9 @@ input {
 
 .d-flex {
   width: 100% !important;
+}
+
+a {
+  display: inline-block;
 }
 

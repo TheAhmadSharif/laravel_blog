@@ -4,8 +4,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Articles</title>
-        <link rel="icon" href="{{ '../css/favicon.png' }}" type="image/x-icon"/>
-        <link rel="stylesheet" type="text/css" href="{{ '../css/app.css' }}">
+
+        <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/app.css')  }}">
+
+        <style type="text/css">
+            td a {
+                color: #333;
+            }
+        </style>
         
     </head>
     <body>
@@ -15,7 +22,10 @@
               <div class="row">
                 <div class="col s12">
                     <div class="mtb">
-                        <a class="btn btn-outline-primary mb btn-sm" href="{{ url('article/create') }}">+ Add New</a></li>
+                        @if (Session::has('message'))
+                            <div class="alert alert-info">{{ Session::get('message') }}</div>
+                        @endif
+                        <a class="btn btn-outline-primary mb btn-sm" href="{{ url('article/create') }}">+ Add New</a>
                             <table class="table">
                                 <tr>
                                     <td>ID</td>
@@ -27,7 +37,11 @@
                                     <tr>
                                     
                                         <td>{{ $Article->id }}</td>
-                                        <td>{{ $Article->title }}</td>
+                                        <td><a href="{{ url('article/list/'.$Article->id) }}">{{ $Article->title }}
+                                            
+
+                                        </a></td>
+
                                         <td>
 
 

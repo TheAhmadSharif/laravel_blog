@@ -13,13 +13,13 @@
 	    		<div>
 	    		
 	    			<ul class="nav">
-				    	 <li></li>
-				      	 <li class="nav-item"><a class="nav-link" href="{{ url('/api') }}">API</a></li>
+				      	 <li class="nav-item"><a target="_blank" class="nav-link" href="{{ url('/api') }}">API</a></li>
 				      	 <li class="nav-item"><a class="nav-link" href="{{ url('/article/list') }}">Articles</a></li>
 				      	 <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About us</a></li>
 				      	 <li>
-				      	 	<form class="form-inline">
-							      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				      	 	<form class="form-inline" method="get" action="{{ url('/search/query') }}">
+				      	 			@csrf
+							      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search">
 								  <button class="btn btn-primary" type="submit">Search</button>
 							</form>
 				      	 </li>

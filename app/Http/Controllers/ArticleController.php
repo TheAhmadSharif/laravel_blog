@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+Use App\Article;
+use Illuminate\Routing\UrlGenerator;
+use Session;
+use Redirect;
+
+
 
 class ArticleController extends Controller
 {
@@ -10,24 +16,50 @@ class ArticleController extends Controller
 
     public function create (Request $request) {
     	$rules = [
-    		'title' => 'required|min:10',
-            'body' => 'required|min:10'
+    		'title' => 'regex:/^[\a-zA-Z.&();, ]{10,60}$/i',
+            'body' => 'required|min:10/i'
     	];
-    	$this->validate($request, $rules);
-
-
+        
+        
         $title = $request->input('title');
         $body = $request->input('body');
-        DB::insert('insert into articles (title, body) values(?, ?)',[$title, $body]);
 
-        echo "Record inserted successfully.";
+        if ($this->validate($request, $rules)) {
+            DB::insert('insert into articles (title, body) values(?, ?)',[$title, $body]);
+            $request->session()->flash('message', 'Article save successfully!');
+            return Redirect::to('article/list');
+        }
 
-    	return $request->all();
+    	
     }
 
 
-    public function edit($id){
-        $user = User::find($id);
-        return View::('edit')->with(compact('user'));
+    public function update (Request $request, $id) {
+
+        $rules = [
+            'title' => 'regex:/^[\a-zA-Z.&();,+-? ]{10,60}$/i',
+            'body' => 'required|min:10/i'
+        ];
+
+        if ($this->validate($request, $rules)) {
+             $article = Article::find($id);
+             $article->title = $request->input('title');
+             $article->body  = $request->input('body');
+             $article->save();
+             $request->session()->flash('message', 'Article updated successfully!');
+             return Redirect::to('article/list');
+        }
+
+       
+        
     }
+
+
+   
+
+    public function query (Request $request) {
+        $search = Article::search('Modi tempora optio et quia.')->get();
+        return $search;
+    }
+
  }

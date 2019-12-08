@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="{{ URL::asset('/css/favicon.png') }}" type="image/x-icon"/>
+        <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/app.css')  }}">
 
         <title> OOPS! </title>

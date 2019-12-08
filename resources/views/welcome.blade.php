@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>:: Blog </title>
-        <link rel="icon" href="{{ '../css/favicon.png' }}" type="image/x-icon"/>
+        <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="{{ 'css/app.css' }}">
 
         <style type="text/css">
@@ -21,7 +21,40 @@
     }   
 
     .time-section {
-        display: table;
+        position: relative;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        color: #202020;
+        background-color: #f7f7f7;
+        border-color: #b8b8b8;
+    }
+
+    h4 a {
+        color: #333;
+    }
+
+    .hr {
+        padding: 10px 0;
+        border-bottom: 1px solid #333;
+    }
+    .article-heading {
+        height: 70px;
+    }
+    .article-content {
+        padding: 10px 0;
+        height: 120px;
+        max-height: 120px;
+        overflow: hidden;
+    }
+    .read-more {
+        margin: 20px 0;
+    }
+    .article-date {
+        display: block;
+        font-size: 12px;
+        color: #666;
     }
    
         </style>
@@ -34,11 +67,38 @@
                          <div class="mtb col-lg-6">
                             <h1>Welcome to this blog.</h1>
                         </div>  <!-- End -->
-                        <div class="alert alert-success mtb time-section col-lg-6">
+                        <div class="mtb time-section col-lg-6">
                                 <span class="far fa-clock" style="color: #fff; font-size: 24px;"></span> <span id="localtime">00:00:00 AM </span>
                                 <span id="date">Wednesday, 13 November</span>
                         </div>  <!-- End Time Section -->
                     </div>  <!-- End -->
+            </div> <!-- End row -->
+
+            <div class="row">
+                 @foreach ($Articles as $Article)
+                    <div class="col-md-4">
+                        <div class="article-heading hr">
+                            <h4><a href="{{ url('article/list/'.$Article->id) }}">{{ $Article->title }}</a></h4>
+                        </div> <!-- End -->
+                        <div class="article-content">
+
+                             <span class="article-date">
+
+                                    <?php
+                                         $newDate = new DateTime($Article->created_at);
+                                         echo $newDate->format('M d, Y, h:i:s a');
+                                    ?>
+                            </span>
+                            {{ substr($Article->body, 0, 160) }} ...
+
+                        </div> <!-- End -->
+
+                        <div class="read-more">
+                            <a href="{{ url('article/list/'.$Article->id) }}" class="badge badge-primary">Read more</a>
+                        </div> <!-- End -->
+                    </div> <!-- End Col -->
+                @endforeach
+                
             </div> <!-- End row -->
           
                 
