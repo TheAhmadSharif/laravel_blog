@@ -7,6 +7,8 @@ Use App\Article;
 use Illuminate\Routing\UrlGenerator;
 use Session;
 use Redirect;
+use Laravel\Scout\Searchable;
+
 
 
 
@@ -34,7 +36,7 @@ class ArticleController extends Controller
     }
 
 
-    public function update (Request $request, $id) {
+public function update (Request $request, $id) {
 
         $rules = [
             'title' => 'regex:/^[\a-zA-Z.&();,+-? ]{10,60}$/i',
@@ -48,18 +50,28 @@ class ArticleController extends Controller
              $article->save();
              $request->session()->flash('message', 'Article updated successfully!');
              return Redirect::to('article/list');
-        }
-
-       
+        }  
         
-    }
+}
+
+
+public function delete (Request $request, $id) {
+        $article = Article::find($id);
+        if($article){
+            $destroy = Article::destroy($id);
+        }
+        
+        $request->session()->flash('message', 'Article deleted successfully!');
+        return Redirect::to('article/list');
+}
 
 
    
 
     public function query (Request $request) {
-        $search = Article::search('Modi tempora optio et quia.')->get();
-        return $search;
+        $search = Article::search('Sunt aut nisi magnam dolor.')->get();
+        echo $search;
+        return 'hello';
     }
 
  }

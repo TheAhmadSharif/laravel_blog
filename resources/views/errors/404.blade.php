@@ -32,12 +32,8 @@
                      <div>
                          <p>You may lost your track.</p>
                      </div>
-                     
-
                 </div>
-
-               
-         </div> <!-- End  -->
+           </div> <!-- End  -->
 
           
 

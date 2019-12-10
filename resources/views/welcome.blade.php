@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>:: Blog </title>
         <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="{{ 'css/app.css' }}">
@@ -63,15 +64,13 @@
          @include('header')
          <div class="container mh">
             <div class="row">
-                     <div class="d-flex justify-content-between">
-                         <div class="mtb col-lg-6">
-                            <h1>Welcome to this blog.</h1>
+                         <div class="mtb col-md-8">
+                            <h1>Welcome to this web portal.</h1>
                         </div>  <!-- End -->
-                        <div class="mtb time-section col-lg-6">
+                        <div class="mtb time-section col-md-4">
                                 <span class="far fa-clock" style="color: #fff; font-size: 24px;"></span> <span id="localtime">00:00:00 AM </span>
                                 <span id="date">Wednesday, 13 November</span>
                         </div>  <!-- End Time Section -->
-                    </div>  <!-- End -->
             </div> <!-- End row -->
 
             <div class="row">
@@ -131,9 +130,6 @@
                           document.getElementById("localtime").innerHTML = timeSpan.toLocaleTimeString();
                         }
                 </script>
-
-
-
          </div>  <!-- End Container -->    
          @include('footer')    
     </body>

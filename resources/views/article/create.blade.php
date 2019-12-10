@@ -16,7 +16,7 @@
          @include('header')
         <div class="container mh">
            <div class="row">
-               <div class="col-md-6 col-sm-12">
+               <div class="col-md-8 col-sm-12">
                 <div class="mtb">
                     <div class="jumbotron">
                             <div>

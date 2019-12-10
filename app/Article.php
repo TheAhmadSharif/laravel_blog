@@ -13,11 +13,15 @@ class Article extends Model
 
     protected $fillable = ['title', 'body', 'created_at', 'updated_at'];
 
+    public function searchableAs()
+    {
+        return 'articles_index';
+    }
 
-    public function toSearchableArray(){
+    public function toSearchableArray()
+    {
         $array = $this->toArray();
-        $array['title'] = $this->title();
-        
-        return array('id' => $array['id'],'title' => $array['title']);
+        echo $array;
+        return $array;
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Routing\UrlGenerator;
 use Illuminate\Validation\Validator;
 
 Route::get('api', function () {
-	$Article = DB::select('select * from articles order by id desc limit 10');
+	$Article = DB::select('select * from articles order by id desc limit 100');
 	return $Article;
 });
 
@@ -29,7 +29,12 @@ Route::get('article/list', function() {
 
 Route::get('article/list/{id}', function($id) {
 	$data = Article::find($id);
-	return view('article/single', ['Article' => $data]);
+	if ($data) {
+		return view('article/single', ['Article' => $data]);
+	}
+	else {
+		return Redirect::to('/404');
+	}
 });
 
 Route::get('article/create', function() {
@@ -43,11 +48,18 @@ Route::get('article/edit/{id}', function($id) {
 });
 
 Route::put('article/update/{id}', 'ArticleController@update');
+Route::get('article/delete/{id}', 'ArticleController@delete');
 
 
 Route::post('article/store', 'ArticleController@create');
 
-Route::get('search/query', 'ArticleController@query');
+// Route::get('/search/query', 'ArticleController@query');
+
+
+Route::get('/search/query', function (Request $request) {
+	$data = Article::search('Traffic moves easily on 56th Street')->get();
+    return $data;
+});
 
 
 

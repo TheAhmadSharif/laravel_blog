@@ -11406,3 +11406,17 @@ a {
   display: inline-block;
 }
 
+body {
+  overflow-x: hidden !important;
+}
+
+footer {
+  margin-bottom: 10px;
+}
+
+.nav-block {
+  display: -webkit-box;
+  display: flex;
+  align-self: center;
+}
+
