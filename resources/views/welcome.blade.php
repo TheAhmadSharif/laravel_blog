@@ -41,7 +41,7 @@
         border-bottom: 1px solid #333;
     }
     .article-heading {
-        height: 70px;
+        height: 75px;
     }
     .article-content {
         padding: 10px 0;
@@ -77,7 +77,11 @@
                  @foreach ($Articles as $Article)
                     <div class="col-md-4">
                         <div class="article-heading hr">
-                            <h4><a href="{{ url('article/list/'.$Article->id) }}">{{ $Article->title }}</a></h4>
+                            <h4><a href="{{ url('article/list/'.$Article->id) }}">
+
+                                 {{ substr($Article->title, 0, 60) }} ...
+
+                            </a></h4>
                         </div> <!-- End -->
                         <div class="article-content">
 

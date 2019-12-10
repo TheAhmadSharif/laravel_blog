@@ -19,7 +19,7 @@
 				      	 <li class="nav-item"><a target="_blank" class="nav-link" href="{{ url('/api') }}">API</a></li>
 				      	 <li class="nav-item"><a class="nav-link" href="{{ url('/article/list') }}">Articles</a></li>
 				      	 <li>
-				      	 	<form class="form-inline" method="GET" action="{{ url('/search/query') }}" style="margin: 0">
+				      	 	<form class="form-inline" method="get" action="{{ url('/search/query') }}" style="margin: 0">
 							      <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
 								  <button class="btn btn-primary" type="submit">Search</button>
 							</form>

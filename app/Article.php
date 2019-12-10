@@ -18,10 +18,16 @@ class Article extends Model
         return 'articles_index';
     }
 
+
+    public function getScoutKey()
+    {
+        return $this->title;
+    }
+
     public function toSearchableArray()
     {
         $array = $this->toArray();
-        echo $array;
-        return $array;
+        return array('id' => $array['id'],'title' => $array['title']);
+
     }
 }

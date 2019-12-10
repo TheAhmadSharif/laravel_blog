@@ -8,7 +8,7 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         // Let's truncate our existing records to start from scratch.
-        Article::truncate();
+        // Article::truncate();
 
         $faker = \Faker\Factory::create();
 

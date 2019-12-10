@@ -33,7 +33,7 @@ Route::get('article/list/{id}', function($id) {
 		return view('article/single', ['Article' => $data]);
 	}
 	else {
-		return Redirect::to('/404');
+		return view('errors/404');
 	}
 });
 
@@ -51,15 +51,8 @@ Route::put('article/update/{id}', 'ArticleController@update');
 Route::get('article/delete/{id}', 'ArticleController@delete');
 
 
-Route::post('article/store', 'ArticleController@create');
-
-// Route::get('/search/query', 'ArticleController@query');
-
-
-Route::get('/search/query', function (Request $request) {
-	$data = Article::search('Traffic moves easily on 56th Street')->get();
-    return $data;
-});
+Route::post('article/store', 'ArticleController@store');
+Route::get('/search/query', 'ArticleController@query');
 
 
 

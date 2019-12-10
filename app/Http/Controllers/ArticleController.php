@@ -16,9 +16,9 @@ class ArticleController extends Controller
 {
   
 
-    public function create (Request $request) {
+    public function store (Request $request) {
     	$rules = [
-    		'title' => 'regex:/^[\a-zA-Z.&();, ]{10,60}$/i',
+    		'title' => 'required|min:10/i',
             'body' => 'required|min:10/i'
     	];
         
@@ -69,9 +69,12 @@ public function delete (Request $request, $id) {
    
 
     public function query (Request $request) {
-        $search = Article::search('Sunt aut nisi magnam dolor.')->get();
-        echo $search;
-        return 'hello';
+
+
+        $search = Article::search('Star Trek')->raw();
+
+
+        return $search;
     }
 
  }
