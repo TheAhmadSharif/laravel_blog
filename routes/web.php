@@ -56,5 +56,10 @@ Route::get('/search/query', 'ArticleController@query');
 
 
 
+Route::get('search', 'AutoCompleteController@index');
+Route::get('autocomplete', 'AutoCompleteController@search');
+
+
+
 
 

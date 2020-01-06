@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 Use App\Article;
 use Illuminate\Routing\UrlGenerator;
 use Session;
@@ -71,7 +72,9 @@ public function delete (Request $request, $id) {
     public function query (Request $request) {
 
 
-        $search = Article::search('Star Trek')->raw();
+        $search = Article::search('Amet ducimus')->raw();
+
+        echo $search;
 
 
         return $search;

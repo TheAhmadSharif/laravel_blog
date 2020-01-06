@@ -44,7 +44,7 @@
             <div class="row">
                      <div class="d-flex justify-content-between">
                          <div class="mtb col-lg-6">
-                            <h2 style="font-size: 26px;">  About Me <img src="{{ URL::asset('/css/ahmad.jpg') }}" width="90" class="profile"></h2>
+                            <h2 style="font-size: 26px;">  About Me <img src="{{ URL::asset('/images/ahmad.jpg') }}" width="90" class="profile"></h2>
 
 
 

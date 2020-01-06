@@ -5,60 +5,8 @@
 
         <title>:: Blog </title>
         <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
-        <link rel="stylesheet" type="text/css" href="{{ 'css/app.css' }}">
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/app.css')  }}">
 
-        <style type="text/css">
-
-        .container {
-            position: relative;
-            z-index: 12;
-            top: 0;
-            left: 0;
-        }
-    #localtime {
-        font-size: 26px;
-        line-height: 30px;
-        width: auto;
-    }   
-
-    .time-section {
-        position: relative;
-        padding: 0.75rem 1.25rem;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-        color: #202020;
-        background-color: #f7f7f7;
-        border-color: #b8b8b8;
-    }
-
-    h4 a {
-        color: #333;
-    }
-
-    .hr {
-        padding: 10px 0;
-        border-bottom: 1px solid #333;
-    }
-    .article-heading {
-        height: 75px;
-    }
-    .article-content {
-        padding: 10px 0;
-        height: 120px;
-        max-height: 120px;
-        overflow: hidden;
-    }
-    .read-more {
-        margin: 20px 0;
-    }
-    .article-date {
-        display: block;
-        font-size: 12px;
-        color: #666;
-    }
-   
-        </style>
     </head>
     <body>
          @include('header')
@@ -79,7 +27,7 @@
                         <div class="article-heading hr">
                             <h4><a href="{{ url('article/list/'.$Article->id) }}">
 
-                                 {{ substr($Article->title, 0, 60) }} ...
+                                 {{ substr($Article->title, 0, 40) }} ...
 
                             </a></h4>
                         </div> <!-- End -->

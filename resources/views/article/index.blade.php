@@ -66,6 +66,6 @@
                 
         </div>  <!-- End container -->
 
-        @include('footer');
+        @include('footer')
     </body>
 </html>

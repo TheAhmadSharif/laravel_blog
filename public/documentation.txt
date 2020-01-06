@@ -1,0 +1,7 @@
+npm run dev
+
+// Run all Mix tasks and minify output...
+npm run production
+
+npm run watch
+

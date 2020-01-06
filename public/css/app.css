@@ -11379,6 +11379,8 @@ a.text-dark:focus {
   box-shadow: 2px 2px 2px #dcdcdc;
   width: 100%;
   padding: 20px 0;
+  position: relative;
+  z-index: 12;
 }
 
 ul,
@@ -11418,5 +11420,73 @@ footer {
   display: -webkit-box;
   display: flex;
   align-self: center;
+}
+
+/* Welcome page or Home Page */
+
+.container {
+  position: relative;
+  z-index: 12;
+  top: 0;
+  left: 0;
+}
+
+#localtime {
+  font-size: 26px;
+  line-height: 30px;
+  width: auto;
+}
+
+.time-section {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #202020;
+  background-color: #f7f7f7;
+  border-color: #b8b8b8;
+}
+
+h4 a {
+  color: #333;
+}
+
+.hr {
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+}
+
+.article-heading {
+  min-height: 75px;
+}
+
+.article-content {
+  padding: 10px 0;
+  height: 120px;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.read-more {
+  margin: 20px 0;
+}
+
+.article-date {
+  display: block;
+  font-size: 12px;
+  color: #666;
+}
+
+.nav-header {
+  position: relative;
+  z-index: 99;
+}
+
+@media only screen and (max-width: 640px) {
+  .logo {
+    display: table;
+    margin: auto;
+  }
 }
 
