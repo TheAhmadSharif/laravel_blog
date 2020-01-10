@@ -7,6 +7,12 @@
         <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/app.css')  }}">
 
+        <style type="text/css">
+          .tt-menu {
+            z-index: 999;
+            background: #FFF;
+          }
+        </style>
     </head>
     <body>
          @include('header')

@@ -14,20 +14,11 @@ class AutoCompleteController extends Controller
     }
  
     public function search(Request $request) {
-          $data = Article::select("title")->where("title","LIKE","%{$request->input('search')}%")->take(5)->get();
+
+          $data = Article::Where("title","like","%{$request->input('search')}%")->take(3)->get();
 
 
-          $modified_data = array();
-
-          foreach ($data as $key) {
-          		$modified_data[] = $key->title;
-           } 
-
-
-          return $modified_data;
+          return $data;
             
     } 
 }
-
-
-		

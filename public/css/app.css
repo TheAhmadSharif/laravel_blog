@@ -11458,7 +11458,12 @@ h4 a {
 }
 
 .article-heading {
-  min-height: 75px;
+  min-height: 70px;
+}
+
+.article-heading h4 {
+  font-size: 1.2rem;
+  line-height: 1em;
 }
 
 .article-content {

@@ -18,6 +18,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="d-flex mt">
+                      {{ }}
                               <div class="input-group">
                                   <input id="search_" name="search" type="text" class="form-control" placeholder="Search" />
                           </div>
