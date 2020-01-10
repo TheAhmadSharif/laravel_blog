@@ -37,7 +37,6 @@
 </header>
  <script type="text/javascript" src="{{ URL::asset('/js/jquery.js') }}"></script>
  <script type="text/javascript" src="{{ URL::asset('/js/typeahead.js') }}"></script>
- <script type="text/javascript" src="{{ URL::asset('/js/handlebars.min.js') }}"></script>
 
 <script type="text/javascript">
 
@@ -46,17 +45,18 @@
 
     $(document).ready(function(){
 			   
+    			var base_path = "{{url('/')}}";
+
 
 				var articles = new Bloodhound({
 					    
   						datumTokenizer: Bloodhound.tokenizers.whitespace('title'),
 					    queryTokenizer: Bloodhound.tokenizers.whitespace,
 					    remote: {
-					        url: 'http://localhost/blog/autocomplete?search=%QUERY',
+					        url: base_path + '/autocomplete?search=%QUERY',
 					        wildcard: '%QUERY', 
 					        filter: function (response) {
 					            return $.map(response, function (object) {
-					            	console.log(object);
 					                return {
 					                    id: object.id,
 					                    title: object.title
@@ -85,7 +85,10 @@
 					      'Does not match',
 					      '</div>'
 					    ].join('\n'),
-					      suggestion: Handlebars.compile('<p><a target="_blank" href="http://localhost/blog/article/list/@{{id}}">@{{title}}</a></p>')
+					      suggestion: function(data) {
+					      	return "<a target='_blank' href="+ base_path + '/article/list/' + data.id + ">"+ data.title +"</a>"
+
+					      }
 				  }
 				});
 

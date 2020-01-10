@@ -58,10 +58,8 @@
                  </div> <!-- End s12 -->
              </div>  <!-- End row -->
              <div class="row">
-                 
-             
                     <?php echo $Articles->links(); ?>
-                </div>
+             </div> <!-- End row -->
 
                 
         </div>  <!-- End container -->

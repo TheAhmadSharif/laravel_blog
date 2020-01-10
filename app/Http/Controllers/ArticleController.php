@@ -67,17 +67,6 @@ public function delete (Request $request, $id) {
 }
 
 
-   
-
-    public function query (Request $request) {
-
-
-        $search = Article::search('Amet ducimus')->raw();
-
-        echo $search;
-
-
-        return $search;
-    }
+ 
 
  }

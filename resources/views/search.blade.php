@@ -6,51 +6,47 @@
         <link rel="icon" href="{{ URL::asset('/css/favicon.jpg') }}" type="image/x-icon"/>
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('/css/app.css')  }}">
 
-         <script type="text/javascript" src="{{ URL::asset('/js/jquery.js') }}"></script>
-         <script type="text/javascript" src="{{ URL::asset('/js/typesahead.js') }}"></script>
-
-
-
     </head>
     <body>
          @include('header')
          <div class="container mh">
+
             <div class="row">
-                <div class="col-md-6">
-                    <div class="d-flex mt">
-                      {{ }}
-                              <div class="input-group">
-                                  <input id="search_" name="search" type="text" class="form-control" placeholder="Search" />
-                          </div>
-                    </div>
-                </div>  <!-- End -->
-                 
-            </div>  <!-- End -->
+                 @foreach ($Articles as $Article)
+                    <div class="col-md-12">
+                        <div class="article-heading hr" style="min-height: auto;">
+                            <h4><a href="{{ url('article/list/'.$Article->id) }}">
+
+                                 {{ $Article->title  }} 
+
+                            </a></h4>
+                        </div> <!-- End -->
+                        <div class="article-content" style="height: auto;">
+
+                             <span class="article-date">
+
+                                    <?php
+                                         $newDate = new DateTime($Article->created_at);
+                                         echo $newDate->format('M d, Y, h:i:s a');
+                                    ?>
+                            </span>
+
+                        </div> <!-- End -->
+
+                        <div class="read-more" style="margin: 0;">
+                            <a href="{{ url('article/list/'.$Article->id) }}" class="badge badge-primary">Read more</a>
+                        </div> <!-- End -->
+                    </div> <!-- End Col -->
+                @endforeach
+            </div> <!-- End row -->
+
+            <div class="row mt">
+                    <?php echo $Articles->links(); ?>
+             </div> <!-- End row -->
+
+
          </div>  <!-- End Container -->    
          @include('footer')   
 
-<script type="text/javascript">
-    var route = "{{ url('autocomplete') }}";
-    $('#search_').typeahead({
-        highlight: true,
-        minLength: 1,
-        offset: true, 
-        hint: true,
-        source:  function (term, process) {
-        return $.get(route, { term: term }, function (data) {
-                console.log(data);                
-                return process(data);
-            });
-        },
-        template: {
-          suggestion:function(data) {
-            return "<a>"+ data +"</a>"
-          }
-        }
-        
-
-
-    });
-</script> 
     </body>
 </html>

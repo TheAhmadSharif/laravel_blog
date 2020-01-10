@@ -9,15 +9,13 @@ Use App\Article;
 
 class AutoCompleteController extends Controller
 {
-    public function index() {
-        return view('search');
+    public function index(Request $request) {
+    	  $data = Article::Where("title","like","%{$request->input('search')}%")->orderBy('id', 'asc')->paginate(6);
+          return view('search', ['Articles' => $data]);
     }
  
     public function search(Request $request) {
-
           $data = Article::Where("title","like","%{$request->input('search')}%")->take(3)->get();
-
-
           return $data;
             
     } 
