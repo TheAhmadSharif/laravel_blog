@@ -8,8 +8,6 @@ Use App\Article;
 use Illuminate\Routing\UrlGenerator;
 use Session;
 use Redirect;
-use Laravel\Scout\Searchable;
-
 
 
 
@@ -40,17 +38,23 @@ class ArticleController extends Controller
 public function update (Request $request, $id) {
 
         $rules = [
-            'title' => 'regex:/^[\a-zA-Z.&();,+-? ]{10,60}$/i',
-            'body' => 'required|min:10/i'
+            'title' => 'regex:/^[\a-zA-Z.&();,+-? ]{1,400}$/i',
+            'body' => 'required|min:1'
         ];
 
         if ($this->validate($request, $rules)) {
              $article = Article::find($id);
-             $article->title = $request->input('title');
-             $article->body  = $request->input('body');
-             $article->save();
-             $request->session()->flash('message', 'Article updated successfully!');
-             return Redirect::to('article/list');
+             
+
+             if($article){
+                DB::table('articles')
+                ->where('id', $id)
+                ->update(array('title' => $request->input('title'), 'body' => $request->input('body')));
+
+                 $request->session()->flash('message', 'Article updated successfully!');
+                 return Redirect::to('article/list');
+             }
+             
         }  
         
 }
@@ -59,14 +63,11 @@ public function update (Request $request, $id) {
 public function delete (Request $request, $id) {
         $article = Article::find($id);
         if($article){
-            $destroy = Article::destroy($id);
+             DB::delete('delete from articles where id = ?' ,[$id]);
         }
         
         $request->session()->flash('message', 'Article deleted successfully!');
         return Redirect::to('article/list');
-}
-
-
- 
+    }
 
  }
